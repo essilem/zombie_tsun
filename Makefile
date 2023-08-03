@@ -1,28 +1,36 @@
 ##
-## EPITECH PROJECT, 2023
-## B-CPE-200-MAR-2-1-dante-enzo.trapolino
-## File description:
+## EPITECH PROJECT, 2019
 ## Makefile
+## File description:
+## makefile
 ##
 
+NAME    = zomb
 
-CC	=	gcc
+CC    = gcc
 
-SRC	=	*.c
+CSFML	= -l csfml-audio -l csfml-graphics -l csfml-network
 
-OBJ	=	$(SRC:.c=.o)
+CSFML1	= -l csfml-system -l csfml-window
 
-NAME =	zombie_tsun
+RM    = rm -f
 
-RM = rm -rf
+SRC	=	my_putchar.c	\
+		main.c \
+		str.c \
+		game.c \
+		trajectoir.c \
 
-all:
-		$(CC) $(SRC) -o $(NAME) -g3
+OBJS    = $(SRC:.c=.o)
+all: $(NAME)
+
+$(NAME): $(OBJS)
+	$(CC) $(OBJS) $(CSFML) $(CSFML1) -o $(NAME)
 
 clean:
-		$(RM) $(OBJ)
+	$(RM) $(OBJS)
 
-fclean:		clean
-		$(RM) $(NAME)
+fclean: clean
+	$(RM) $(NAME)
 
-re: 		fclean all
+re: fclean all

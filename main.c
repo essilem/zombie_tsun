@@ -1,14 +1,18 @@
 /*
-** EPITECH PROJECT, 2023
-** main
+** EPITECH PROJECT, 2022
+** open
 ** File description:
-** main basic
+** test
 */
 
-#include "zombie.h"
+#include "radar.h"
 
-int main(int ac, char **av)
+int main(void)
 {
-	menu1();
+    int fd, nb = 0, l = 0;
+    struct stat map;
+    sfRenderWindow* window; sfVideoMode mode = {1920, 1080, 32};
+    window = sfRenderWindow_create(mode, "My Radar", sfResize | sfClose, NULL);
+    game(window, mode);
     return 0;
 }
