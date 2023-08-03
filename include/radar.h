@@ -33,29 +33,31 @@ int game(sfRenderWindow* window, sfVideoMode mode);
 void my_putchar(char c);
 int my_put_nbr(int nb);
 
-int fdy(char **tab, int x);
-int fdx(char **tab, int x);
-int rey(char **tab, int x);
-int rex(char **tab, int x);
 int my_getnbr(char *str);
+
 struct main_menu{
-    int n, a, t, i;
     sfRenderWindow* window;
     sfTime time;
+    sfEvent event;
+
+    sfTexture* map;
+    sfSprite* background;
+
     sfTexture* play;
     sfSprite* obj;
-    sfVector2f planeposi;
-    sfTexture* map;
-    sfTexture* plane01;
-    sfTexture* plane02;
-    sfTexture* tower;
-    sfTexture* tower01;
-    sfSprite* obj01;
-    sfSprite* obj02;
-    sfSprite* background;
-    sfSprite* obje;
-    sfSprite* obje01;
-    sfEvent event;
+
+    sfSprite* objset;
+    sfTexture* setting;
+    sfVector2f posisetting;
+
+    sfVector2f posibonus;
+    sfSprite* objbon;
+    sfTexture* bonus;
+
+    sfVector2f posiother;
+    sfSprite* objoth;
+    sfTexture* other;
+
 };
 
 #endif
