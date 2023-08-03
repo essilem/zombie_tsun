@@ -22,12 +22,17 @@
     #define RADAR
 
 int main(void);
+
 int my_getnbr(char *str);
 char **my_str_toword_array(char * str, char c);
+
 int my_putstr(char const* str);
+
 int game(sfRenderWindow* window, sfVideoMode mode);
+
 void my_putchar(char c);
 int my_put_nbr(int nb);
+
 int fdy(char **tab, int x);
 int fdx(char **tab, int x);
 int rey(char **tab, int x);

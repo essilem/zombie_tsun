@@ -5,7 +5,7 @@
 ** test
 */
 
-#include "radar.h"
+#include "../include/radar.h"
 
 int main(void)
 {

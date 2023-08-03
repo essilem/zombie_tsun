@@ -5,7 +5,7 @@
 ** put char
 */
 
-#include "radar.h"
+#include "../include/radar.h"
 
 void my_putchar(char c)
 {

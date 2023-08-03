@@ -15,11 +15,10 @@ CSFML1	= -l csfml-system -l csfml-window
 
 RM    = rm -f
 
-SRC	=	my_putchar.c	\
-		main.c \
-		str.c \
-		game.c \
-		trajectoir.c \
+SRC	=	src/my_putchar.c	\
+		src/main.c \
+		src/str.c \
+		src/game.c \
 
 OBJS    = $(SRC:.c=.o)
 all: $(NAME)
