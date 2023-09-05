@@ -7,7 +7,7 @@
 
 #include "../include/radar.h"
 
-int destroy_all(struct main_menu mygame)
+int destroy_all_menu(struct main_menu mygame)
 {
     sfSprite_destroy(mygame.obj); sfTexture_destroy(mygame.play);
     sfSprite_destroy(mygame.objset); sfTexture_destroy(mygame.setting);
@@ -15,6 +15,25 @@ int destroy_all(struct main_menu mygame)
     sfSprite_destroy(mygame.objoth); sfTexture_destroy(mygame.other);
     sfSprite_destroy(mygame.background); sfTexture_destroy(mygame.map);
     return 0;
+}
+
+void if_click(struct main_menu mygame, int x, int x1, int y, int y1, char *str)
+{
+    mygame.mouse = sfMouse_getPositionRenderWindow(mygame.window);
+    mygame.button = sfMouse_isButtonPressed(sfMouseLeft);
+    if (mygame.mouse.x >= x && mygame.mouse.x <= x1 && 
+    mygame.mouse.y >= y && mygame.mouse.y <= y1){
+        if (mygame.event.type == sfEvtMouseButtonPressed)
+            my_putstr(str);
+            /*if (= 'p') {
+                my_putstr("non");
+                //destroy_all_menu(mygame);
+                play();
+            }/* else {
+                my_putstr(str);
+            }*/
+            //settings(rpg);
+    }
 }
 
 int game(sfRenderWindow* window, sfVideoMode mode)
@@ -42,7 +61,6 @@ int game(sfRenderWindow* window, sfVideoMode mode)
     mygame.objset = sfSprite_create();
     sfSprite_setPosition(mygame.objset, mygame.posisetting);
     sfSprite_setScale(mygame.objset, scaleset);
-    //sfVector2f posit;sfVector2f positio; sfVector2f pos;
     
     mygame.posibonus.x = 1500; mygame.posibonus.y = 300;
     mygame.bonus = sfTexture_createFromFile("bonus/play.png", NULL);
@@ -56,12 +74,18 @@ int game(sfRenderWindow* window, sfVideoMode mode)
     sfSprite_setPosition(mygame.objoth, mygame.posiother);
     sfSprite_setScale(mygame.objoth, scaleset);
 
-     while (sfRenderWindow_isOpen(window)) {
+    while (sfRenderWindow_isOpen(window)) {
+        
         sfSprite_setPosition(mygame.obj, position);
         sfSprite_setPosition(mygame.objset, mygame.posisetting);
         sfSprite_setPosition(mygame.objbon, mygame.posibonus);
         sfSprite_setPosition(mygame.objoth, mygame.posiother);
         while (sfRenderWindow_pollEvent(window, &mygame.event)) {
+            mygame.window = window;
+            if_click(mygame, 1500, 1850, 800, 980, "play"); //play
+            if_click(mygame, 1500, 1800, 500, 650, "set"); //set
+            if_click(mygame, 1500, 1800, 300, 450, "bonus"); //bonus
+            if_click(mygame, 1500, 1800, 100, 250, "other"); //other
             sfVector2i mousepos = sfMouse_getPositionRenderWindow(window);
             if (mygame.event.type == sfEvtClosed || sfKeyboard_isKeyPressed(sfKeyEscape))
                 sfRenderWindow_close(window);
@@ -80,8 +104,9 @@ int game(sfRenderWindow* window, sfVideoMode mode)
                 sfSprite_setTexture(mygame.objbon, mygame.bonus, sfTrue);
                 sfSprite_setTexture(mygame.objoth, mygame.other, sfTrue);
                 seconds = seconds + 1;
-            } sfClock_restart(clock);
+            }
+            sfClock_restart(clock);
         }
-    } destroy_all(mygame);
+    }
     return (0);
 }

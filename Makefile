@@ -19,6 +19,7 @@ SRC	=	src/my_putchar.c	\
 		src/main.c \
 		src/str.c \
 		src/game.c \
+		src/play.c \
 
 OBJS    = $(SRC:.c=.o)
 all: $(NAME)

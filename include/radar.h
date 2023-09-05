@@ -17,6 +17,19 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <SFML/Graphics/Export.h>
+#include <SFML/Graphics/Color.h>
+#include <SFML/Graphics/Rect.h>
+#include <SFML/Graphics/Types.h>
+#include <SFML/Graphics/PrimitiveType.h>
+#include <SFML/Graphics/RenderStates.h>
+#include <SFML/Graphics/Vertex.h>
+#include <SFML/Window/Event.h>
+#include <SFML/Window/VideoMode.h>
+#include <SFML/Window/WindowHandle.h>
+#include <SFML/Window/Window.h>
+#include <SFML/System/Vector2.h>
+#include <stddef.h>
 
 #ifndef RADAR
     #define RADAR
@@ -30,6 +43,8 @@ int my_putstr(char const* str);
 
 int game(sfRenderWindow* window, sfVideoMode mode);
 
+int play(void);
+
 void my_putchar(char c);
 int my_put_nbr(int nb);
 
@@ -39,6 +54,9 @@ struct main_menu{
     sfRenderWindow* window;
     sfTime time;
     sfEvent event;
+
+    sfMouseButton button;
+    sfVector2i mouse;
 
     sfTexture* map;
     sfSprite* background;
@@ -57,6 +75,9 @@ struct main_menu{
     sfVector2f posiother;
     sfSprite* objoth;
     sfTexture* other;
+};
+
+struct play_home{
 
 };
 
